@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using FileGenerator.Core;
 
-namespace FileGenerator.Services
+namespace FileGenerator.Services.FileWriters
 {
-    public class TsvFileWriter
+    public class TsvFileWriter : IFileWriter
     {
         public void WriteFile(string fileLocation, List<Customer> customers)
         {

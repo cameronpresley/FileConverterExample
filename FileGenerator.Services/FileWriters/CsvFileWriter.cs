@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using FileGenerator.Core;
 
-namespace FileGenerator.Services
+namespace FileGenerator.Services.FileWriters
 {
-    public class CsvFileWriter
+    public class CsvFileWriter : IFileWriter
     {
         public void WriteFile(string fileLocation, List<Customer> customers)
         {

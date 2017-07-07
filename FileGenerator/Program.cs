@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using FileGenerator.Core;
 using FileGenerator.Services;
 using FileGenerator.Services.FileWriters;
 
@@ -9,12 +11,22 @@ namespace FileGenerator
         static void Main(string[] args)
         {
             var input = File.ReadAllText(@"ExampleFiles\mock_data.csv");
+            Console.WriteLine("What is the name of the output file?");
+            var fileName = Console.ReadLine();
+            var fileType = DetermineFileType(fileName);
+
+            var writer = new FileWriterFactory().CreateWriter(fileType);
+
             var parser = new CsvFileReader();
             var records = parser.RetrieveRecords(input);
-            var writer = new CsvFileWriter();
-            writer.WriteFile("kumquats.csv", records);
-            var tsvWriter = new TsvFileWriter();
-            tsvWriter.WriteFile("platypus.tsv", records);
+            writer.WriteFile(fileName, records);
+        }
+
+        private static OutputFileType DetermineFileType(string fileName)
+        {
+            if (fileName.ToLower().EndsWith(".csv")) return OutputFileType.Csv;
+            if (fileName.ToLower().EndsWith(".tsv")) return OutputFileType.Tsv;
+            return OutputFileType.Unknown;
         }
     }
 }

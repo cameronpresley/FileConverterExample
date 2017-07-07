@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using FileGenerator.Core;
 
-namespace FileGenerator.Services
+namespace FileGenerator.Services.FileWriters
 {
-    interface FileWriter
+    public interface IFileWriter
     {
+        void WriteFile(string filePath, List<Customer> customers);
     }
 }
