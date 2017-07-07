@@ -10,7 +10,6 @@ namespace FileGenerator.Services
     {
         public void WriteFile(string fileLocation, List<Customer> customers)
         {
-            if (File.Exists(fileLocation)) throw new ArgumentException("File already exists at " + fileLocation);
             using (var writer = new StreamWriter(fileLocation))
             {
                 var columns = new List<string>
