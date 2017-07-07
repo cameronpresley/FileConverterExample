@@ -47,6 +47,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ExampleFiles\mock_data.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileGenerator.Core\FileGenerator.Core.csproj">
+      <Project>{69794883-399d-4c2c-9907-07b937ed4e36}</Project>
+      <Name>FileGenerator.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileGenerator.Services\FileGenerator.Services.csproj">
+      <Project>{45e81853-5c2c-4001-b0fa-da8161474c95}</Project>
+      <Name>FileGenerator.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

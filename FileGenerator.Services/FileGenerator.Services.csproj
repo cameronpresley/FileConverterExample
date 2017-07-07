@@ -43,5 +43,11 @@
     <Compile Include="CsvFileReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileGenerator.Core\FileGenerator.Core.csproj">
+      <Project>{69794883-399d-4c2c-9907-07b937ed4e36}</Project>
+      <Name>FileGenerator.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
