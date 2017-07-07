@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using FileGenerator.Services;
 
 namespace FileGenerator
@@ -15,7 +10,8 @@ namespace FileGenerator
             var input = File.ReadAllText(@"ExampleFiles\mock_data.csv");
             var parser = new CsvFileReader();
             var records = parser.RetrieveRecords(input);
-            var x = 10;
+            var writer = new CsvFileWriter();
+            writer.WriteFile("kumquats.csv", records);
         }
     }
 }
