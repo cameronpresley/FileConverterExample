@@ -12,6 +12,8 @@ namespace FileGenerator
             var records = parser.RetrieveRecords(input);
             var writer = new CsvFileWriter();
             writer.WriteFile("kumquats.csv", records);
+            var tsvWriter = new TsvFileWriter();
+            tsvWriter.WriteFile("platypus.tsv", records);
         }
     }
 }
