@@ -11,5 +11,6 @@ namespace FileGenerator.Core
         Unknown,
         Csv,
         Tsv,
+        Json,
     }
 }

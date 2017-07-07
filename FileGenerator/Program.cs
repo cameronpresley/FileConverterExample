@@ -41,6 +41,7 @@ namespace FileGenerator
         {
             if (fileName.ToLower().EndsWith(".csv")) return OutputFileType.Csv;
             if (fileName.ToLower().EndsWith(".tsv")) return OutputFileType.Tsv;
+            if (fileName.ToLower().EndsWith(".json")) return OutputFileType.Json;
             return OutputFileType.Unknown;
         }
     }
