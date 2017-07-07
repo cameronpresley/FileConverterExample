@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using FileGenerator.Core;
 using FileGenerator.Services;
-using FileGenerator.Services.FileWriters;
 
 namespace FileGenerator
 {
@@ -13,13 +13,28 @@ namespace FileGenerator
             var input = File.ReadAllText(@"ExampleFiles\mock_data.csv");
             Console.WriteLine("What is the name of the output file?");
             var fileName = Console.ReadLine();
+
             var fileType = DetermineFileType(fileName);
+            if (fileType != OutputFileType.Unknown)
+            {
+                var writer = new FileWriterFactory().CreateWriter(fileType);
+                var parser = new CsvFileReader();
+                var records = parser.RetrieveRecords(input);
+                writer.WriteFile(fileName, records);
+            }
+            else
+            {
+                DisplayErrorScreen(fileName);
+            }
+        }
 
-            var writer = new FileWriterFactory().CreateWriter(fileType);
-
-            var parser = new CsvFileReader();
-            var records = parser.RetrieveRecords(input);
-            writer.WriteFile(fileName, records);
+        private static void DisplayErrorScreen(string fileName)
+        {
+            if (fileName.Trim() == string.Empty)
+                Console.WriteLine("Please specify a file name.");
+            else
+                Console.WriteLine("Couldn't figure out how to export a file with an extension of " +
+                                  fileName.Split(new[] {"."}, StringSplitOptions.RemoveEmptyEntries).Last());
         }
 
         private static OutputFileType DetermineFileType(string fileName)
