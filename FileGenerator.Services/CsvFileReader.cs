@@ -7,7 +7,7 @@ namespace FileGenerator.Services
 {
     public class CsvFileReader
     {
-        private const string IdColumn = "id";
+        //private const string IdColumn = "id";
         private const string FirstNameColumn = "first_name";
         private const string LastNameColumn = "last_name";
         private const string EmailColumn = "email";
